@@ -1,19 +1,15 @@
 import { SiteObject } from './processor';
 import { deleteDuplicateTestCases, prettify, zip } from './util';
 
-const findTestCases = () => {
-  const doc = document.cloneNode(true) as HTMLElement;
-  doc.querySelectorAll('.div-btn-copy').forEach((node) => {
-    node.parentNode?.removeChild(node);
-  });
-  doc.querySelectorAll('.btn-copy').forEach((node) => {
-    node.parentNode?.removeChild(node);
-  });
+const findTestCases = (document: Document) => {
+  const doc = document.cloneNode(true) as Document;
+  doc.querySelectorAll('.div-btn-copy').forEach((node) => node.parentNode?.removeChild(node));
+  doc.querySelectorAll('.btn-copy').forEach((node) => node.parentNode?.removeChild(node));
   const inputs: string[] = [];
   const outputs: string[] = [];
   doc.querySelectorAll('h3').forEach((node) => {
-    const textContent = node.textContent?.normalize('NFKC');
-    if (textContent === undefined) return;
+    if (node.textContent === null) return;
+    const textContent = node.textContent.normalize('NFKC');
     const inputRegExp = /^.*(入力例|Sample Input)\s*[0-9]*\s*$/;
     const outputRegExp = /^.*(出力例|Sample Output)\s*[0-9]*\s*$/;
     if (inputRegExp.test(textContent)) {
@@ -50,12 +46,11 @@ const appendCopyButton = (h2: Node | null, handler: () => void) => {
 };
 
 export const siteAtCoder: SiteObject = {
+  invokeTypes: ['NORMAL'],
   domain: 'atcoder.jp',
   findTestCases,
-
-  addCopyButton: (handler: () => void) => {
+  addCopyButton: (document: Document, handler: () => void) => {
     appendCopyButton(document.querySelector('.h2'), handler) ||
       appendCopyButton(document.querySelector('h2'), handler); // for ancient atcoder
   },
-  isIncreaseStack: false,
 };

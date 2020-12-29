@@ -1,11 +1,12 @@
 import { TestCases } from './types';
-import { deleteDuplicateTestCases, prettify, zip, makeTemplate } from './util';
+
+type InvokeType = 'NORMAL' | 'KEYDOWN' | 'LOAD';
 
 export type SiteObject = {
+  invokeTypes: InvokeType[];
   domain: string;
-  /** Extract test cases from document  */
-  findTestCases: () => TestCases;
-  addCopyButton: (handler: () => void) => void;
-  isReady?: () => boolean;
-  isIncreaseStack: boolean;
+  findTestCases: (document: Document) => TestCases;
+  addCopyButton: (document: Document, handler: () => void) => void;
+  isReady?: (document: Document) => boolean;
+  isIncreaseStack?: boolean;
 };
