@@ -4,12 +4,13 @@
   "description": "Userscript for competitive programming: parse test cases and copy template to clipboard",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --mode production",
+    "build": "webpack --mode production --progress",
     "test": "jest"
   },
   "author": {
     "name": "Hugo Sansaqua",
-    "email": "privet.kitty99@gmail.com"
+    "email": "privet.kitty99@gmail.com",
+    "homepage": "https://privet-kitty.github.io/"
   },
   "license": "MIT",
   "devDependencies": {
