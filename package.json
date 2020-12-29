@@ -4,7 +4,7 @@
   "description": "Userscript for competitive programming: parse test cases and copy template to clipboard",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "jest"
   },
   "author": "Hugo Sansaqua",
   "license": "MIT",
