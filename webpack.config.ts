@@ -1,11 +1,12 @@
 import path from 'path';
 import WebpackUserscript from 'webpack-userscript';
-import { getUserScriptConfig } from './userscript.config';
+import { UserScriptConfig } from './userscript.config';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-module.exports = (_: any, option: any) => {
-  const isDev = option.environment === 'development';
-  const { devPath, devPort, scriptFileName, scriptHeaders } = getUserScriptConfig(isDev);
+module.exports = (_: any, options: any) => {
+  const isDev = options.mode === 'development';
+  console.log(`environment: ${options.mode}`);
+  const { devUrl, devPort, scriptFileName, scriptHeaders } = UserScriptConfig;
   const outputPath = path.resolve(__dirname, 'dist');
   return {
     entry: path.join(__dirname, 'src/index.ts'),
@@ -40,9 +41,15 @@ module.exports = (_: any, option: any) => {
     },
     plugins: [
       new WebpackUserscript({
-        headers: scriptHeaders,
+        headers: isDev
+          ? {
+              ...scriptHeaders,
+              versions: '[version]-build.[buildNo]',
+            }
+          : scriptHeaders,
         proxyScript: {
-          baseUrl: devPath,
+          baseUrl: devUrl,
+          filename: '[basename].proxy.user.js',
           enable: isDev,
         },
       }),

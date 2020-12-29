@@ -4,38 +4,40 @@ import pkg from './package.json';
 const DEV_PORT = 8080;
 
 interface IWebpackUserScript {
-  /* development mode */
-  isDev: boolean;
-
-  /* development homepage path */
-  devPath: string;
-
-  /* http port */
+  devUrl: string;
   devPort: number;
-
-  /* script file name, without file extension */
   scriptFileName: string;
-
   /**
    * userscript headers
-   * including script name, description, match url, grants and so on
    * see https://www.tampermonkey.net/documentation.php for details
    **/
-  scriptHeaders: WebpackUserscript.WPUSOptions['headers'];
+  scriptHeaders: WebpackUserscript.HeaderObject;
 }
 
-export const getUserScriptConfig = (isDev: boolean): IWebpackUserScript => {
-  return {
-    isDev,
-    devPath: isDev ? `https://localhost:${DEV_PORT}` : pkg.homepage,
-    devPort: DEV_PORT,
-    scriptFileName: pkg.name,
-    scriptHeaders: {
-      name: pkg.name,
-      description: pkg.description,
-      version: pkg.version,
-      author: pkg.author.name,
-      match: '*://(example.com|github.com)/*',
-    },
-  };
+export const UserScriptConfig: IWebpackUserScript = {
+  devUrl: `https://localhost:${DEV_PORT}`,
+  devPort: DEV_PORT,
+  scriptFileName: pkg.name,
+  scriptHeaders: {
+    name: pkg.name,
+    description: pkg.description,
+    version: pkg.version,
+    author: pkg.author.name,
+    match: [
+      'https://atcoder.jp/*/tasks/*',
+      'https://*.atcoder.jp/tasks/*',
+      'https://*.codechef.com/*/problems/*',
+      'https://*.codechef.com/problems/*',
+      'https://yukicoder.me/problems/*',
+      'https://toph.co/p/*',
+      'https://toph.co/arena*',
+      'https://csacademy.com/contest/*/task/*',
+    ],
+    grant: ['GM_setClipboard', 'GM_registerMenuCommand', 'GM_getResourceText'],
+    resouce: [
+      'template https://raw.githubusercontent.com/privet-kitty/cl-competitive/master/non-module/template.lisp',
+      'modOperations https://raw.githubusercontent.com/privet-kitty/cl-competitive/master/module/mod-operations.lisp',
+      'increaseStack https://raw.githubusercontent.com/privet-kitty/cl-competitive/master/non-module/increase-space.lisp',
+    ],
+  },
 };

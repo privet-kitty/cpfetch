@@ -1,10 +1,11 @@
 {
   "name": "cpfetch",
-  "version": "1.0.0",
-  "description": "Userscript for competitive programming: parse test cases and copy template to clipboard",
+  "version": "0.2.1",
+  "description": "Userscript for competitive programming: parse test cases and copy template to clipboard on various online judges",
   "homepage": "https://privet-kitty.github.io/",
   "main": "index.js",
   "scripts": {
+    "dev": "webpack-cli serve --mode development",
     "build": "webpack --mode production --progress",
     "test": "jest"
   },
