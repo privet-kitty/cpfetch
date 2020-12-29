@@ -1,0 +1,14 @@
+{
+  "name": "cpfetch",
+  "version": "1.0.0",
+  "description": "Userscript for competitive programming: parse test cases and copy template to clipboard",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "Hugo Sansaqua",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^4.1.3"
+  }
+}
