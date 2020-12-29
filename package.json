@@ -2,6 +2,7 @@
   "name": "cpfetch",
   "version": "1.0.0",
   "description": "Userscript for competitive programming: parse test cases and copy template to clipboard",
+  "homepage": "https://privet-kitty.github.io/",
   "main": "index.js",
   "scripts": {
     "build": "webpack --mode production --progress",
@@ -9,8 +10,7 @@
   },
   "author": {
     "name": "Hugo Sansaqua",
-    "email": "privet.kitty99@gmail.com",
-    "homepage": "https://privet-kitty.github.io/"
+    "email": "privet.kitty99@gmail.com"
   },
   "license": "MIT",
   "devDependencies": {
@@ -23,6 +23,7 @@
     "eslint-config-prettier": "^7.1.0",
     "prettier": "^2.2.1",
     "ts-loader": "^8.0.12",
+    "ts-node": "^9.1.1",
     "typescript": "^4.1.3",
     "webpack": "^5.11.1",
     "webpack-cli": "^4.3.0",
