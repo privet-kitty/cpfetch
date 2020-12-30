@@ -35,16 +35,22 @@ const appendCopyButton = (h1: Node | null, handler: () => void) => {
   const copyButton = document.createElement('button');
   copyButton.id = COPY_BUTTON_ID;
   copyButton.innerHTML = COPY_BUTTON_LABEL;
+  copyButton.classList.add('button', 'grey');
   copyButton.addEventListener('click', handler);
   h1.parentNode.insertBefore(copyButton, h1.nextSibling);
   return true;
 };
 
+const isReady = (document: Document) => {
+  return document.querySelectorAll('h1:not(.left)').length > 0;
+};
+
 export const siteCodeChef: SiteObject = {
-  invokeTypes: ['load', 'keydown'],
   domain: 'codechef.com',
   findTestCases,
   addCopyButton: (document: Document, handler: () => void) => {
     document.querySelectorAll('h1:not(.left)').forEach((h1) => appendCopyButton(h1, handler));
   },
+  isReady,
+  isIncreaseStack: true,
 };

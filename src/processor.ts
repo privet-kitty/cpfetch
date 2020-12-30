@@ -18,25 +18,20 @@ const process = ({ findTestCases, addCopyButton, isIncreaseStack }: SiteObject) 
 };
 
 export const setUpSite = (site: SiteObject) => {
-  const { invokeTypes, isReady } = site;
-  if (invokeTypes.includes('normal')) {
-    if (isReady === undefined) {
-      process(site);
-    } else {
-      const interval = setInterval(() => {
-        if (isReady(document)) {
-          process(site);
-          clearInterval(interval);
-        }
-      }, 500);
-    }
+  const { isReady } = site;
+  if (isReady === undefined) {
+    process(site);
+  } else {
+    const check = (changes: MutationRecord[], observer: MutationObserver) => {
+      if (isReady(document, changes, observer)) {
+        console.log('isReady() succeeded');
+        observer.disconnect();
+        process(site);
+      }
+    };
+    new MutationObserver(check).observe(document, { childList: true, subtree: true });
   }
-  if (invokeTypes.includes('load')) {
-    window.addEventListener('load', () => process(site));
-  }
-  if (invokeTypes.includes('keydown')) {
-    window.addEventListener('keydown', (e) => {
-      if (e.key === 't') process(site);
-    });
-  }
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 't') process(site);
+  });
 };

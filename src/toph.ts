@@ -39,7 +39,6 @@ const addCopyButton = (h1: Node | null, handler: () => void) => {
 };
 
 export const siteToph: SiteObject = {
-  invokeTypes: ['normal'],
   domain: 'toph.co',
   findTestCases,
   addCopyButton: (document: Document, handler: () => void) => {

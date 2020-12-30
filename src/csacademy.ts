@@ -51,7 +51,6 @@ const isReady = (document: Document) => {
 };
 
 export const siteCsAcademy: SiteObject = {
-  invokeTypes: ['normal', 'keydown'],
   domain: 'csacademy.com',
   findTestCases,
   addCopyButton: (document: Document, handler: () => void) => {

@@ -47,7 +47,6 @@ const appendCopyButton = (h2: Node | null, handler: () => void) => {
 };
 
 export const siteAtCoder: SiteObject = {
-  invokeTypes: ['normal'],
   domain: 'atcoder.jp',
   findTestCases,
   addCopyButton: (document: Document, handler: () => void) => {

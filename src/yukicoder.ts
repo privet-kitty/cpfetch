@@ -43,7 +43,6 @@ const appendCopyButton = (h3: Node | null, handler: () => void) => {
 };
 
 export const siteYukicoder: SiteObject = {
-  invokeTypes: ['normal'],
   domain: 'yukicoder.me',
   findTestCases,
   addCopyButton: (document: Document, handler: () => void) => {
