@@ -8,16 +8,14 @@ const findTestCases = (document: Document) => {
   const headNodes = document.querySelectorAll<HTMLElement>('thead tr th');
   if (headNodes[0].innerText === 'Input' && headNodes[1].innerText === 'Output') {
     const grandparentNode = headNodes[0]?.parentNode?.parentNode;
-    if (grandparentNode) {
-      const ios = (grandparentNode as Element).nextElementSibling?.childNodes;
-      if (ios !== undefined) {
-        ios.forEach((node) => {
-          const inputNode = node.childNodes[0] as HTMLElement;
-          const outputNode = node.childNodes[1] as HTMLElement;
+    if (grandparentNode instanceof Element) {
+      grandparentNode.nextElementSibling?.childNodes?.forEach((node) => {
+        const [inputNode, outputNode] = node.childNodes;
+        if (inputNode instanceof HTMLElement && outputNode instanceof HTMLElement) {
           inputs.push(prettify(inputNode.innerText));
           outputs.push(prettify(outputNode.innerText));
-        });
-      }
+        }
+      });
     }
   }
   console.log(inputs, outputs);
@@ -40,11 +38,24 @@ const appendCopyButton = (h1: Node | null, handler: () => void) => {
   return true;
 };
 
+const isReady = (document: Document) => {
+  const headNodes = document.querySelectorAll('thead tr th');
+  return (
+    headNodes !== undefined &&
+    headNodes.length >= 2 &&
+    headNodes[0] instanceof HTMLElement &&
+    headNodes[0].innerText === 'Input' &&
+    headNodes[1] instanceof HTMLElement &&
+    headNodes[1].innerText === 'Output'
+  );
+};
+
 export const siteCsAcademy: SiteObject = {
-  invokeTypes: ['keydown'],
+  invokeTypes: ['normal', 'keydown'],
   domain: 'csacademy.com',
   findTestCases,
   addCopyButton: (document: Document, handler: () => void) => {
     document.querySelectorAll('h1').forEach((node) => appendCopyButton(node, handler));
   },
+  isReady,
 };
