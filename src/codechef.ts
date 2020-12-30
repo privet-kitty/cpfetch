@@ -13,6 +13,13 @@ const findTestCases = (document: Document) => {
     const text = node.nextElementSibling?.textContent;
     if (text !== undefined && text !== null) outputs.push(prettify(text));
   });
+  for (let id = 1; id < 1000; id++) {
+    const itext = document.querySelector(`#exampleinput${id}`)?.nextElementSibling?.textContent;
+    const otext = document.querySelector(`#exampleoutput${id}`)?.nextElementSibling?.textContent;
+    if (!(itext && otext)) break;
+    inputs.push(prettify(itext));
+    outputs.push(prettify(otext));
+  }
 
   if (inputs.length === outputs.length) {
     return zip(inputs, outputs);
