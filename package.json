@@ -20,7 +20,6 @@
     "@types/webpack-dev-server": "^3.11.1",
     "@typescript-eslint/eslint-plugin": "^4.11.1",
     "@typescript-eslint/parser": "^4.11.1",
-    "cross-env": "^7.0.3",
     "eslint": "^7.16.0",
     "eslint-config-prettier": "^7.1.0",
     "prettier": "^2.2.1",
