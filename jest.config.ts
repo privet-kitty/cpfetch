@@ -1,5 +1,3 @@
-import { Configuration } from 'webpack';
-
 import type { Config } from '@jest/types';
 
 const config: Config.InitialOptions = {

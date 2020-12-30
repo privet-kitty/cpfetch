@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "webpack-cli serve --mode development",
     "build": "webpack --mode production --progress",
-    "test": "jest"
+    "test": "jest",
+    "lint": "eslint --ignore-path .gitignore \"./{,/**/}*.ts\""
   },
   "author": {
     "name": "Hugo Sansaqua",
