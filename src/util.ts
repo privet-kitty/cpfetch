@@ -28,14 +28,17 @@ export const formatTestForm = (testCases: TestCases) => {
 
 export const findMod = (problemText: string) => {
   const result = [];
-  const contains = (list: RegExp[]) => list.some((s) => problemText.search(s) >= 0);
+  const contains = (list: RegExp[]) => {
+    return list.some(
+      // prevent a number containing default mod (e.g. '110007') from being incorrectly detected
+      (s) => problemText.search(new RegExp('(^|[^\\d])' + s.source + '($|[^\\d])')) >= 0,
+    );
+  };
   if (contains([/998,?244,?353/])) result.push(998244353);
   else if (contains([/163,?577,?857/])) result.push(163577857);
   else if (contains([/1,?000,?000,?007/, /10\^[\s{]*9[\s}]*\+[\s]*7/])) result.push(1000000007);
   else if (contains([/1,?000,?000,?009/, /10\^[\s{]*9[\s}]*\+[\s]*9/])) result.push(1000000009);
-  // FIXME: Currently a number containing '10007' (e.g. 110007) is incorrectly detected.
   else if (contains([/10,?007/])) result.push(10007);
-  console.log(`Found moduli: ${result}`);
   return result.length === 1 ? result[0] : null;
 };
 
@@ -63,8 +66,8 @@ const insertMod = (template: string) => {
   }
 };
 
-const insertUrl = (text: string) => {
-  return text.replace('PROBLEM_URL_TO_BE_REPLACED', document.URL);
+const insertUrl = (template: string) => {
+  return template.replace('PROBLEM_URL_TO_BE_REPLACED', document.URL);
 };
 
 export const createTemplate = (testCases: TestCases, header: string) => {
