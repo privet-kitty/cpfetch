@@ -1,8 +1,12 @@
-import { COPY_BUTTON_LABEL } from './constants';
+import { COPY_BUTTON_ID, COPY_BUTTON_LABEL } from './constants';
 import { SiteObject } from './types';
 import { createTemplate } from './util';
 
 const process = ({ findTestCases, addCopyButton, isIncreaseStack }: SiteObject) => {
+  if (document.querySelector('#' + COPY_BUTTON_ID) !== null) {
+    console.log('Copy button already exist.');
+    return;
+  }
   const setTemplateToClipboard = () => {
     const testCases = findTestCases(document);
     const header = isIncreaseStack ? GM_getResourceText('increaseStack') : '';
