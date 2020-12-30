@@ -26,18 +26,14 @@ export const formatTestForm = (testCases: TestCases) => {
   return result;
 };
 
-export const findMod = () => {
-  const text = document.body.textContent;
-  if (text === null) {
-    console.error('Found no textContent');
-    return null;
-  }
+export const findMod = (problemText: string) => {
   const result = [];
-  const contains = (list: RegExp[]) => list.some((s) => text.search(s) >= 0);
+  const contains = (list: RegExp[]) => list.some((s) => problemText.search(s) >= 0);
   if (contains([/998,?244,?353/])) result.push(998244353);
   else if (contains([/163,?577,?857/])) result.push(163577857);
   else if (contains([/1,?000,?000,?007/, /10\^[\s{]*9[\s}]*\+[\s]*7/])) result.push(1000000007);
   else if (contains([/1,?000,?000,?009/, /10\^[\s{]*9[\s}]*\+[\s]*9/])) result.push(1000000009);
+  // FIXME: Currently a number containing '10007' (e.g. 110007) is incorrectly detected.
   else if (contains([/10,?007/])) result.push(10007);
   console.log(`Found moduli: ${result}`);
   return result.length === 1 ? result[0] : null;
@@ -47,13 +43,13 @@ const insert = (dest: string, src: string, idx: number) => {
   return dest.slice(0, idx) + src + dest.slice(idx);
 };
 
-const insertMod = (text: string) => {
-  const mod = findMod();
-  if (mod == null) {
-    return text;
+const insertMod = (template: string) => {
+  const mod = findMod(document.body.textContent ?? '');
+  if (mod === null) {
+    return template;
   } else {
     console.log(`Use ${mod} as modulus`);
-    let result = text.replace('1000000007', String(mod));
+    let result = template.replace('1000000007', String(mod));
     const header1 = 'BEGIN_INSERTED_CONTENTS';
     const modOperations =
       GM_getResourceText('modOperations') + '\n(define-mod-operations cl-user::+mod+ :cl-user)\n\n';
