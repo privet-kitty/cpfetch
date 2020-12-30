@@ -1,4 +1,4 @@
-import { SiteObject } from './processor';
+import { SiteObject } from './types';
 import { deleteDuplicateTestCases, prettify, zip } from './util';
 
 const findTestCases = (document: Document) => {
@@ -46,7 +46,7 @@ const appendCopyButton = (h2: Node | null, handler: () => void) => {
 };
 
 export const siteAtCoder: SiteObject = {
-  invokeTypes: ['NORMAL'],
+  invokeTypes: ['normal'],
   domain: 'atcoder.jp',
   findTestCases,
   addCopyButton: (document: Document, handler: () => void) => {

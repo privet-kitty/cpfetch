@@ -1,11 +1,8 @@
-const hello = (name1: string, name2: string, name3: string): string => {
-  return `Hello, ${name1}, ${name2} and ${name3}!`;
-};
+import { setUpSite } from './processor';
+import { siteAtCoder } from './atcoder';
 
-console.log(
-  hello(
-    'world ddddddddddddddddddddddddddddd',
-    'ddddddddddddddddddddddd',
-    'eeeeeeeeeeeeeeeeeeeeeeeeeee',
-  ),
-);
+const hostname = new URL(document.URL).hostname;
+
+[siteAtCoder].forEach((site) => {
+  if (new RegExp(site.domain).test(hostname)) setUpSite(site);
+});
