@@ -1,15 +1,16 @@
+import { COPY_BUTTON_LABEL } from './constants';
 import { SiteObject } from './types';
-import { makeTemplate } from './util';
+import { createTemplate } from './util';
 
 const process = ({ findTestCases, addCopyButton, isIncreaseStack }: SiteObject) => {
   const setTemplateToClipboard = () => {
     const testCases = findTestCases(document);
     const header = isIncreaseStack ? GM_getResourceText('increaseStack') : '';
-    GM_setClipboard(makeTemplate(testCases, header));
+    GM_setClipboard(createTemplate(testCases, header));
     console.log('copied');
   };
   addCopyButton(document, setTemplateToClipboard);
-  GM_registerMenuCommand('Copy template to clipboard', setTemplateToClipboard, 'c');
+  GM_registerMenuCommand(COPY_BUTTON_LABEL, setTemplateToClipboard, 'c');
 };
 
 export const setUpSite = (site: SiteObject) => {
@@ -30,6 +31,8 @@ export const setUpSite = (site: SiteObject) => {
     window.addEventListener('load', () => process(site));
   }
   if (invokeTypes.includes('keydown')) {
-    window.addEventListener('keydown', () => process(site));
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 't') process(site);
+    });
   }
 };

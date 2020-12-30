@@ -1,3 +1,4 @@
+import { COPY_BUTTON_ID, COPY_BUTTON_LABEL } from './constants';
 import { SiteObject } from './types';
 import { deleteDuplicateTestCases, prettify, zip } from './util';
 
@@ -37,9 +38,9 @@ const findTestCases = (document: Document) => {
 const appendCopyButton = (h2: Node | null, handler: () => void) => {
   if (h2 === null) return false;
   const copyButton = document.createElement('button');
-  copyButton.id = 'copyButton';
+  copyButton.id = COPY_BUTTON_ID;
   copyButton.classList.add('btn', 'btn-default', 'btn-sm');
-  copyButton.innerHTML = 'Copy template to clipboard';
+  copyButton.innerHTML = COPY_BUTTON_LABEL;
   copyButton.addEventListener('click', handler);
   h2.appendChild(copyButton);
   return true;

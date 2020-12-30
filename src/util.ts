@@ -71,7 +71,7 @@ const insertUrl = (text: string) => {
   return text.replace('PROBLEM_URL_TO_BE_REPLACED', document.URL);
 };
 
-export const makeTemplate = (testCases: TestCases, header: string) => {
+export const createTemplate = (testCases: TestCases, header: string) => {
   const testForm = formatTestForm(testCases);
   const templateProto = GM_getResourceText('template');
   const template = insertUrl(insertMod(templateProto));
@@ -89,7 +89,7 @@ export const prettify = (s: string) => {
 
 export const deleteDuplicateTestCases = (testCases: TestCases) => {
   const result: TestCases = [];
-  const set = new Set();
+  const set = new Set<string>();
   testCases.forEach(([input, output]) => {
     if (!set.has(input)) {
       set.add(input);
