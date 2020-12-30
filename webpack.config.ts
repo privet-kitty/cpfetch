@@ -3,9 +3,9 @@ import WebpackUserscript from 'webpack-userscript';
 import { UserScriptConfig } from './userscript.config';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-module.exports = (_: any, options: any) => {
-  const isDev = options.mode === 'development';
-  console.log(`environment: ${options.mode}`);
+module.exports = (_: any, argv: any) => {
+  const isDev = argv.mode === 'development';
+  console.log(`environment: ${argv.mode}`);
   const { devUrl, devPort, scriptFileName, scriptHeaders } = UserScriptConfig;
   const outputPath = path.resolve(__dirname, 'dist');
   return {
@@ -27,9 +27,6 @@ module.exports = (_: any, options: any) => {
     resolve: {
       extensions: ['.ts', '.js'],
     },
-    optimization: {
-      minimize: !isDev,
-    },
     devServer: {
       https: true,
       port: devPort,
@@ -49,7 +46,6 @@ module.exports = (_: any, options: any) => {
           : scriptHeaders,
         proxyScript: {
           baseUrl: devUrl,
-          filename: '[basename].proxy.user.js',
           enable: isDev,
         },
       }),
