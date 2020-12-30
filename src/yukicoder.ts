@@ -11,15 +11,15 @@ const findTestCases = (document: Document) => {
     const inputRegExp = /入力/;
     const outputRegExp = /出力/;
     if (inputRegExp.test(textContent)) {
-      const preNode = node.nextElementSibling;
-      if (preNode !== null && preNode.textContent !== null) {
-        inputs.push(prettify(preNode.textContent));
+      const itext = node.nextElementSibling?.textContent;
+      if (itext !== null && itext !== undefined) {
+        inputs.push(prettify(itext));
       }
     }
     if (outputRegExp.test(node.textContent)) {
-      const preNode = node.nextElementSibling;
-      if (preNode !== null && preNode.textContent !== null) {
-        outputs.push(prettify(preNode.textContent));
+      const otext = node.nextElementSibling?.textContent;
+      if (otext !== null && otext !== undefined) {
+        outputs.push(prettify(otext));
       }
     }
   });

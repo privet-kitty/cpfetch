@@ -6,16 +6,16 @@ const findTestCases = (document: Document) => {
   const inputs: string[] = [];
   const outputs: string[] = [];
   document.querySelectorAll('h3#exampleinput, h3#sampleinput').forEach((node) => {
-    const text = node.nextElementSibling?.textContent;
-    if (text !== undefined && text !== null) inputs.push(prettify(text));
+    const itext = node.nextElementSibling?.textContent;
+    if (itext !== undefined && itext !== null) inputs.push(prettify(itext));
   });
   document.querySelectorAll('h3#exampleoutput, h3#sampleoutput').forEach((node) => {
-    const text = node.nextElementSibling?.textContent;
-    if (text !== undefined && text !== null) outputs.push(prettify(text));
+    const otext = node.nextElementSibling?.textContent;
+    if (otext !== undefined && otext !== null) outputs.push(prettify(otext));
   });
   for (let id = 1; id < 1000; id++) {
-    const itext = document.querySelector(`#exampleinput${id}`)?.nextElementSibling?.textContent;
-    const otext = document.querySelector(`#exampleoutput${id}`)?.nextElementSibling?.textContent;
+    const itext = document.getElementById(`exampleinput${id}`)?.nextElementSibling?.textContent;
+    const otext = document.getElementById(`exampleoutput${id}`)?.nextElementSibling?.textContent;
     if (!(itext && otext)) break;
     inputs.push(prettify(itext));
     outputs.push(prettify(otext));

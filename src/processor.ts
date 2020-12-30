@@ -3,8 +3,8 @@ import { SiteObject } from './types';
 import { createTemplate } from './util';
 
 const process = ({ findTestCases, addCopyButton, isIncreaseStack }: SiteObject) => {
-  if (document.querySelector('#' + COPY_BUTTON_ID) !== null) {
-    console.log('Copy button already exist.');
+  if (document.getElementById(COPY_BUTTON_ID) !== null) {
+    console.log('Copy button already exists.');
     return;
   }
   const setTemplateToClipboard = () => {

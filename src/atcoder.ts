@@ -14,15 +14,15 @@ const findTestCases = (document: Document) => {
     const inputRegExp = /^.*(入力例|Sample Input)\s*[0-9]*\s*$/;
     const outputRegExp = /^.*(出力例|Sample Output)\s*[0-9]*\s*$/;
     if (inputRegExp.test(textContent)) {
-      const preNode = node.parentNode?.querySelector('pre');
-      if (preNode !== null && preNode !== undefined && preNode.textContent !== null) {
-        inputs.push(prettify(preNode.textContent));
+      const itext = node.parentNode?.querySelector('pre')?.textContent;
+      if (itext !== null && itext !== undefined) {
+        inputs.push(prettify(itext));
       }
     }
     if (outputRegExp.test(textContent)) {
-      const preNode = node.parentNode?.querySelector('pre');
-      if (preNode !== null && preNode !== undefined && preNode.textContent !== null) {
-        outputs.push(prettify(preNode.textContent));
+      const otext = node.parentNode?.querySelector('pre')?.textContent;
+      if (otext !== null && otext !== undefined) {
+        outputs.push(prettify(otext));
       }
     }
   });

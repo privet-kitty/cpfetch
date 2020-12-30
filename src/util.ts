@@ -1,3 +1,4 @@
+/** TODO: clean up many hard-coded strings */
 import { TestCases } from './types';
 
 // FIXME: more sane formatting of S-expression
