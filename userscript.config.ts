@@ -34,7 +34,7 @@ export const UserScriptConfig: IWebpackUserScript = {
       'https://csacademy.com/contest/*/task/*',
     ],
     grant: ['GM_setClipboard', 'GM_registerMenuCommand', 'GM_getResourceText'],
-    resouce: [
+    resource: [
       'template https://raw.githubusercontent.com/privet-kitty/cl-competitive/master/non-module/template.lisp',
       'modOperations https://raw.githubusercontent.com/privet-kitty/cl-competitive/master/module/mod-operations.lisp',
       'increaseStack https://raw.githubusercontent.com/privet-kitty/cl-competitive/master/non-module/increase-space.lisp',
