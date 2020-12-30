@@ -32,6 +32,7 @@ const addCopyButton = (h1: Node | null, handler: () => void) => {
   const copyButton = document.createElement('button');
   copyButton.id = COPY_BUTTON_ID;
   copyButton.innerHTML = COPY_BUTTON_LABEL;
+  copyButton.classList.add('btn', 'default');
   copyButton.addEventListener('click', handler);
   h1.parentNode.insertBefore(copyButton, h1.nextSibling);
   return true;
