@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name        cpfetch
-// @version     0.3.0
+// @version     0.3.1
 // @author      Hugo Sansaqua
 // @description Userscript for competitive programming: parse test cases and copy template to clipboard on various online judges
 // @homepage    https://github.com/privet-kitty/cpfetch
@@ -19,4 +19,6 @@
 // @resource    template https://raw.githubusercontent.com/privet-kitty/cl-competitive/master/non-module/template.lisp
 // @resource    modOperations https://raw.githubusercontent.com/privet-kitty/cl-competitive/master/module/mod-operations.lisp
 // @resource    increaseStack https://raw.githubusercontent.com/privet-kitty/cl-competitive/master/non-module/increase-space.lisp
+// @downloadURL https://privet-kitty.github.io/cpfetch/cpfetch.user.js
+// @updateURL   https://privet-kitty.github.io/cpfetch/cpfetch.meta.js
 // ==/UserScript==
