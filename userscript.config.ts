@@ -29,7 +29,6 @@ export const UserScriptConfig: IWebpackUserScript = {
     author: pkg.author.name,
     match: [
       'https://atcoder.jp/*/tasks/*',
-      'https://*.atcoder.jp/tasks/*',
       'https://*.codechef.com/*/problems/*',
       'https://*.codechef.com/problems/*',
       'https://yukicoder.me/problems/*',
