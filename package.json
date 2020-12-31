@@ -3,6 +3,7 @@
   "version": "0.3.0",
   "description": "Userscript for competitive programming: parse test cases and copy template to clipboard on various online judges",
   "homepage": "https://github.com/privet-kitty/cpfetch",
+  "baseUrl": "https://privet-kitty.github.io/",
   "scripts": {
     "dev": "webpack-cli serve --mode development",
     "build": "webpack --mode production --progress",

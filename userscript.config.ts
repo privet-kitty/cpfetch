@@ -5,6 +5,8 @@ const DEV_PORT = 8080;
 
 interface IWebpackUserScript {
   devUrl: string;
+  /** base URL for distributing script */
+  baseUrl: string;
   devPort: number;
   scriptFileName: string;
   /**
@@ -17,10 +19,11 @@ interface IWebpackUserScript {
 export const UserScriptConfig: IWebpackUserScript = {
   devUrl: `https://localhost:${DEV_PORT}`,
   devPort: DEV_PORT,
+  baseUrl: pkg.baseUrl,
   scriptFileName: pkg.name,
   scriptHeaders: {
     name: pkg.name,
-    namespace: 'https://privet-kitty.github.io/',
+    namespace: pkg.baseUrl,
     description: pkg.description,
     version: pkg.version,
     author: pkg.author.name,

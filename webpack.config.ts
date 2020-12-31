@@ -6,7 +6,7 @@ import { UserScriptConfig } from './userscript.config';
 module.exports = (_: any, argv: any) => {
   const isDev = argv.mode === 'development';
   console.log(`environment: ${argv.mode}`);
-  const { devUrl, devPort, scriptFileName, scriptHeaders } = UserScriptConfig;
+  const { devUrl, baseUrl, devPort, scriptFileName, scriptHeaders } = UserScriptConfig;
   const outputPath = path.resolve(__dirname, 'dist');
   return {
     entry: path.join(__dirname, 'src/index.ts'),
@@ -44,6 +44,8 @@ module.exports = (_: any, argv: any) => {
               versions: '[version]-build.[buildNo]',
             }
           : scriptHeaders,
+        downloadBaseUrl: `${baseUrl}${scriptFileName}/`,
+        updateBaseUrl: `${baseUrl}${scriptFileName}/`,
         proxyScript: {
           baseUrl: devUrl,
           enable: isDev,
