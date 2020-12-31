@@ -20,6 +20,7 @@ export const UserScriptConfig: IWebpackUserScript = {
   scriptFileName: pkg.name,
   scriptHeaders: {
     name: pkg.name,
+    namespace: 'https://privet-kitty.github.io/',
     description: pkg.description,
     version: pkg.version,
     author: pkg.author.name,
