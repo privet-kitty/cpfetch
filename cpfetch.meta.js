@@ -5,7 +5,6 @@
 // @description Userscript for competitive programming: parse test cases and copy template to clipboard on various online judges
 // @homepage    https://github.com/privet-kitty/cpfetch
 // @match       https://atcoder.jp/*/tasks/*
-// @match       https://*.atcoder.jp/tasks/*
 // @match       https://*.codechef.com/*/problems/*
 // @match       https://*.codechef.com/problems/*
 // @match       https://yukicoder.me/problems/*
