@@ -21,9 +21,7 @@ jobs:
       - name: Run lint
         run: npm run lint
       - name: Build
-        run: |
-            npm run build
-            touch dist/index.html
+        run: npm run build
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
