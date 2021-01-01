@@ -3,20 +3,17 @@ import pkg from './package.json';
 
 const DEV_PORT = 8080;
 
-interface IWebpackUserScript {
+interface UserScriptConfig {
   devUrl: string;
   downloadBaseUrl: string;
   updateBaseUrl: string;
   devPort: number;
   scriptName: string;
-  /**
-   * userscript headers
-   * see https://www.tampermonkey.net/documentation.php for details
-   **/
+  /** See https://www.tampermonkey.net/documentation.php for details */
   scriptHeaders: WebpackUserscript.HeaderObject;
 }
 
-export const userScriptConfig: IWebpackUserScript = {
+export const userScriptConfig: UserScriptConfig = {
   devUrl: `https://localhost:${DEV_PORT}`,
   devPort: DEV_PORT,
   downloadBaseUrl: `${pkg.baseUrl}${pkg.name}/`,

@@ -9,8 +9,8 @@ const findTestCases = (document: Document) => {
   const inputs: string[] = [];
   const outputs: string[] = [];
   doc.querySelectorAll('h3').forEach((node) => {
-    if (node.textContent === null) return;
-    const textContent = node.textContent.normalize('NFKC');
+    const textContent = node.textContent?.normalize('NFKC');
+    if (textContent === undefined) return;
     const inputRegExp = /^.*(入力例|Sample Input)\s*[0-9]*\s*$/;
     const outputRegExp = /^.*(出力例|Sample Output)\s*[0-9]*\s*$/;
     if (inputRegExp.test(textContent)) {
@@ -35,22 +35,19 @@ const findTestCases = (document: Document) => {
   }
 };
 
-const appendCopyButton = (h2: Node | null, handler: () => void) => {
-  if (h2 === null) return false;
+const addCopyButton = (document: Document, handler: () => void) => {
+  const h2 = document.querySelector('span.h2');
+  if (h2 === null) return;
   const copyButton = document.createElement('button');
   copyButton.id = COPY_BUTTON_ID;
   copyButton.classList.add('btn', 'btn-default', 'btn-sm');
   copyButton.innerHTML = COPY_BUTTON_LABEL;
   copyButton.addEventListener('click', handler);
   h2.appendChild(copyButton);
-  return true;
 };
 
 export const siteAtCoder: SiteObject = {
   domain: 'atcoder.jp',
   findTestCases,
-  addCopyButton: (document: Document, handler: () => void) => {
-    appendCopyButton(document.querySelector('.h2'), handler) ||
-      appendCopyButton(document.querySelector('h2'), handler); // for ancient atcoder
-  },
+  addCopyButton,
 };

@@ -29,7 +29,8 @@ const findTestCases = (document: Document) => {
   }
 };
 
-const appendCopyButton = (sidebar: Node | null, handler: () => void) => {
+const addCopyButton = (document: Document, handler: () => void) => {
+  const sidebar = document.querySelector('aside.sidebar');
   if (sidebar === null) return;
   const copyButton = document.createElement('button');
   copyButton.id = COPY_BUTTON_ID;
@@ -46,9 +47,7 @@ const isReady = (document: Document) => {
 export const siteCodeChef: SiteObject = {
   domain: 'codechef.com',
   findTestCases,
-  addCopyButton: (document: Document, handler: () => void) => {
-    appendCopyButton(document.querySelector('aside.sidebar'), handler);
-  },
+  addCopyButton,
   isReady,
   isIncreaseStack: true,
 };
