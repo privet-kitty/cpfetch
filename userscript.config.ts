@@ -8,7 +8,7 @@ interface IWebpackUserScript {
   /** base URL for distributing script */
   baseUrl: string;
   devPort: number;
-  scriptFileName: string;
+  scriptName: string;
   /**
    * userscript headers
    * see https://www.tampermonkey.net/documentation.php for details
@@ -16,11 +16,11 @@ interface IWebpackUserScript {
   scriptHeaders: WebpackUserscript.HeaderObject;
 }
 
-export const UserScriptConfig: IWebpackUserScript = {
+export const userScriptConfig: IWebpackUserScript = {
   devUrl: `https://localhost:${DEV_PORT}`,
   devPort: DEV_PORT,
   baseUrl: pkg.baseUrl,
-  scriptFileName: pkg.name,
+  scriptName: pkg.name,
   scriptHeaders: {
     name: pkg.name,
     namespace: pkg.baseUrl,
