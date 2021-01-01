@@ -5,8 +5,8 @@ const DEV_PORT = 8080;
 
 interface IWebpackUserScript {
   devUrl: string;
-  /** base URL for distributing script */
-  baseUrl: string;
+  downloadBaseUrl: string;
+  updateBaseUrl: string;
   devPort: number;
   scriptName: string;
   /**
@@ -19,7 +19,8 @@ interface IWebpackUserScript {
 export const userScriptConfig: IWebpackUserScript = {
   devUrl: `https://localhost:${DEV_PORT}`,
   devPort: DEV_PORT,
-  baseUrl: pkg.baseUrl,
+  downloadBaseUrl: `${pkg.baseUrl}${pkg.name}/`,
+  updateBaseUrl: `${pkg.baseUrl}${pkg.name}/`,
   scriptName: pkg.name,
   scriptHeaders: {
     name: pkg.name,
