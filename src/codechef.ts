@@ -35,7 +35,7 @@ const addCopyButton = (document: Document, handler: () => void) => {
   const copyButton = document.createElement('button');
   copyButton.id = COPY_BUTTON_ID;
   copyButton.innerHTML = COPY_BUTTON_LABEL;
-  copyButton.classList.add('button', 'blue');
+  copyButton.classList.add('button', 'grey');
   copyButton.addEventListener('click', handler);
   sidebar.appendChild(copyButton);
 };
