@@ -1,12 +1,9 @@
 name: CI
 
-on:
-  push:
-    branches:
-      - master
+on: [push]
 
 jobs:
-  build:
+  test-build-deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -21,8 +18,10 @@ jobs:
       - name: Run lint
         run: npm run lint
       - name: Build
+        if: github.ref == 'refs/heads/master'
         run: npm run build
       - name: Deploy
+        if: github.ref == 'refs/heads/master'
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
