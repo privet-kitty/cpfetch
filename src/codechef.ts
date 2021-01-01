@@ -29,27 +29,25 @@ const findTestCases = (document: Document) => {
   }
 };
 
-const appendCopyButton = (h1: Node | null, handler: () => void) => {
-  if (h1 === null) return false;
-  if (h1.parentNode === undefined || h1.parentNode === null) return false;
+const appendCopyButton = (sidebar: Node | null, handler: () => void) => {
+  if (sidebar === null) return;
   const copyButton = document.createElement('button');
   copyButton.id = COPY_BUTTON_ID;
   copyButton.innerHTML = COPY_BUTTON_LABEL;
-  copyButton.classList.add('button', 'grey');
+  copyButton.classList.add('button', 'blue');
   copyButton.addEventListener('click', handler);
-  h1.parentNode.insertBefore(copyButton, h1.nextSibling);
-  return true;
+  sidebar.appendChild(copyButton);
 };
 
 const isReady = (document: Document) => {
-  return document.querySelectorAll('h1:not(.left)').length > 0;
+  return document.querySelector('aside.sidebar') !== null;
 };
 
 export const siteCodeChef: SiteObject = {
   domain: 'codechef.com',
   findTestCases,
   addCopyButton: (document: Document, handler: () => void) => {
-    document.querySelectorAll('h1:not(.left)').forEach((h1) => appendCopyButton(h1, handler));
+    appendCopyButton(document.querySelector('aside.sidebar'), handler);
   },
   isReady,
   isIncreaseStack: true,
