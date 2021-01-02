@@ -1,4 +1,5 @@
-import { findMod } from './util';
+import { TestCases } from './types';
+import { deleteDuplicateTestCases, findMod } from './util';
 
 const MODULI = [1000000007, 1000000009, 998244353, 10007, 163577857];
 
@@ -24,5 +25,31 @@ describe('findMod', () => {
       expect(findMod(modStr + 'a')).toBe(mod);
       expect(findMod(modStr + '0')).toBeNull();
     });
+  });
+});
+
+describe('deleteDuplicateTestCases', () => {
+  test('empty case', () => {
+    expect(deleteDuplicateTestCases([])).toStrictEqual([]);
+  });
+  test('non duplicate case', () => {
+    const testCases: TestCases = [
+      ['in1', 'out1'],
+      ['in2', 'out2'],
+      ['in3', 'out3'],
+    ];
+    expect(deleteDuplicateTestCases(testCases)).toStrictEqual(testCases);
+  });
+  test('duplicate case', () => {
+    const testCases: TestCases = [
+      ['in1', 'out1'],
+      ['in2', 'out2'],
+      ['in1', 'out1'],
+      ['in1', 'out1'],
+    ];
+    expect(deleteDuplicateTestCases(testCases)).toStrictEqual([
+      ['in1', 'out1'],
+      ['in2', 'out2'],
+    ]);
   });
 });
