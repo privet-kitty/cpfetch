@@ -6,8 +6,8 @@ const findTestCases = (document: Document) => {
   const inputs: string[] = [];
   const outputs: string[] = [];
   document.querySelectorAll('h6').forEach((node) => {
-    if (node.textContent === null) return;
-    const textContent = node.textContent.normalize('NFKC');
+    const textContent = node.textContent?.normalize('NFKC');
+    if (textContent === undefined) return;
     const inputRegExp = /入力/;
     const outputRegExp = /出力/;
     if (inputRegExp.test(textContent)) {
@@ -16,7 +16,7 @@ const findTestCases = (document: Document) => {
         inputs.push(prettify(itext));
       }
     }
-    if (outputRegExp.test(node.textContent)) {
+    if (outputRegExp.test(textContent)) {
       const otext = node.nextElementSibling?.textContent;
       if (otext !== null && otext !== undefined) {
         outputs.push(prettify(otext));
