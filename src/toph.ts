@@ -1,6 +1,6 @@
 import { COPY_BUTTON_ID, COPY_BUTTON_LABEL } from './constants';
 import { SiteObject } from './types';
-import { prettify, zip } from './util';
+import { createCopyButton, prettify, zip } from './util';
 
 const findTestCases = (document: Document) => {
   const inputs: string[] = [];
@@ -29,11 +29,8 @@ const findTestCases = (document: Document) => {
 const addCopyButton = (h1: Node | null, handler: () => void) => {
   if (h1 === null) return false;
   if (h1.parentNode === null) return false;
-  const copyButton = document.createElement('button');
-  copyButton.id = COPY_BUTTON_ID;
-  copyButton.innerHTML = COPY_BUTTON_LABEL;
+  const copyButton = createCopyButton(handler);
   copyButton.classList.add('btn', 'default');
-  copyButton.addEventListener('click', handler);
   h1.parentNode.insertBefore(copyButton, h1.nextSibling);
   return true;
 };

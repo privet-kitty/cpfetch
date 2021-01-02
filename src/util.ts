@@ -1,4 +1,5 @@
 /** TODO: clean up many hard-coded strings */
+import { COPY_BUTTON_ID, COPY_BUTTON_LABEL } from './constants';
 import { TestCases } from './types';
 
 // FIXME: more sane formatting of S-expression
@@ -101,4 +102,12 @@ export const deleteDuplicateTestCases = (testCases: TestCases) => {
 
 export const zip = <T>(array1: T[], array2: T[]): [T, T][] => {
   return array1.map((_, i) => [array1[i], array2[i]]);
+};
+
+export const createCopyButton = (handler: () => void) => {
+  const copyButton = document.createElement('button');
+  copyButton.id = COPY_BUTTON_ID;
+  copyButton.innerHTML = COPY_BUTTON_LABEL;
+  copyButton.addEventListener('click', handler);
+  return copyButton;
 };
