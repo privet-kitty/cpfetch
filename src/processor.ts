@@ -1,6 +1,5 @@
-import { COPY_BUTTON_ID, COPY_BUTTON_LABEL } from './constants';
 import { SiteObject } from './types';
-import { createTemplate } from './util';
+import { COPY_BUTTON_ID, COPY_BUTTON_LABEL, createTemplate } from './util';
 
 const process = ({ findTestCases, addCopyButton, isIncreaseStack }: SiteObject) => {
   if (document.getElementById(COPY_BUTTON_ID) !== null) {

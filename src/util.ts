@@ -1,5 +1,4 @@
 /** TODO: clean up many hard-coded strings */
-import { COPY_BUTTON_ID, COPY_BUTTON_LABEL } from './constants';
 import { TestCases } from './types';
 
 // FIXME: more sane formatting of S-expression
@@ -103,6 +102,9 @@ export const deleteDuplicateTestCases = (testCases: TestCases) => {
 export const zip = <T>(array1: T[], array2: T[]): [T, T][] => {
   return array1.map((_, i) => [array1[i], array2[i]]);
 };
+
+export const COPY_BUTTON_ID = 'cpfetchCopyButton';
+export const COPY_BUTTON_LABEL = 'Copy template to clipboard';
 
 export const createCopyButton = (handler: () => void) => {
   const copyButton = document.createElement('button');
