@@ -1,4 +1,3 @@
-import { COPY_BUTTON_ID, COPY_BUTTON_LABEL } from './constants';
 import { SiteObject } from './types';
 import { createCopyButton, deleteDuplicateTestCases, prettify, zip } from './util';
 
