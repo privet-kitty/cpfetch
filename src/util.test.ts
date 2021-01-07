@@ -26,6 +26,9 @@ describe('findMod', () => {
       expect(findMod(modStr + '0')).toBeNull();
     });
   });
+  test('Should return null when multiple moduli are detected', () => {
+    expect(findMod('10^9+7 998244353')).toBeNull();
+  });
 });
 
 describe('deleteDuplicateTestCases', () => {
