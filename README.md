@@ -9,7 +9,7 @@ npm install
 npm run dev
 ```
 
-Then proxy script can be installed via https://localhost:8080/cpfetch.proxy.user.js.
+Then proxy script `cpfetch.proxy.user.js` can be installed via https://localhost:8080/.
 
 ## Copyright
 
