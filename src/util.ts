@@ -30,16 +30,17 @@ export const formatTestForm = (testCases: TestCases) => {
 export const findMod = (problemText: string) => {
   const result = [];
   const contains = (list: RegExp[]) => {
-    return list.some(
-      // prevent a number containing default mod (e.g. '110007') from being incorrectly detected
-      (s) => problemText.search(new RegExp('(^|[^\\d])' + s.source + '($|[^\\d])')) >= 0,
-    );
+    return list.some((s) => problemText.search(s) >= 0);
   };
-  if (contains([/998,?244,?353/])) result.push(998244353);
-  else if (contains([/163,?577,?857/])) result.push(163577857);
-  else if (contains([/1,?000,?000,?007/, /10\^[\s{]*9[\s}]*\+[\s]*7/])) result.push(1000000007);
-  else if (contains([/1,?000,?000,?009/, /10\^[\s{]*9[\s}]*\+[\s]*9/])) result.push(1000000009);
-  else if (contains([/10,?007/])) result.push(10007);
+  // prevent a number containing default mod (e.g. '110007') from being incorrectly detected
+  const frob = (s: RegExp) => new RegExp('(^|[^\\d])' + s.source + '($|[^\\d])');
+  if (contains([frob(/998,?244,?353/)])) result.push(998244353);
+  else if (contains([frob(/163,?577,?857/)])) result.push(163577857);
+  else if (contains([frob(/1,?000,?000,?007/), /10\^[\s{]*9[\s}]*\+[\s]*7/]))
+    result.push(1000000007);
+  else if (contains([frob(/1,?000,?000,?009/), /10\^[\s{]*9[\s}]*\+[\s]*9/]))
+    result.push(1000000009);
+  else if (contains([frob(/10,?007/)])) result.push(10007);
   return result.length === 1 ? result[0] : null;
 };
 
