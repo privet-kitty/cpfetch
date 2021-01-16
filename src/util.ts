@@ -32,8 +32,9 @@ export const findMod = (problemText: string) => {
   const contains = (list: RegExp[]) => {
     return list.some((s) => problemText.search(s) >= 0);
   };
-  // prevent a number containing default mod (e.g. '110007') from being incorrectly detected
-  const frob = (s: RegExp) => new RegExp('(^|[^\\d])' + s.source + '($|[^\\d])');
+  // 1. A number containing default mod (e.g. '110007') shouldn't be detected
+  // 2. Repetition of a mod (e.g. '1000710007') should be detected
+  const frob = (s: RegExp) => new RegExp('(^|[^\\d])(' + s.source + ')+($|[^\\d])');
   if (contains([frob(/998,?244,?353/)])) result.push(998244353);
   if (contains([frob(/163,?577,?857/)])) result.push(163577857);
   if (contains([frob(/1,?000,?000,?007/), /10\^[\s{]*9[\s}]*\+[\s]*7/])) result.push(1000000007);

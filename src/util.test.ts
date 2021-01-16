@@ -29,6 +29,10 @@ describe('findMod', () => {
   test('Should return null when multiple moduli are detected', () => {
     expect(findMod('10^9+7 998244353')).toBeNull();
   });
+  test('Should return mod when duplicate moduli are detected', () => {
+    expect(findMod('998244353 998244353')).toBe(998244353);
+    expect(findMod('998244353998244353')).toBe(998244353);
+  });
 });
 
 describe('deleteDuplicateTestCases', () => {
