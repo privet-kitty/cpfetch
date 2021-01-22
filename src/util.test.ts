@@ -13,6 +13,10 @@ describe('findMod', () => {
   test('Should understand exponential notation', () => {
     expect(findMod('10^9+7')).toBe(1000000007);
     expect(findMod('10^9 + 7')).toBe(1000000007);
+    expect(findMod('109+7')).toBe(1000000007);
+    expect(findMod('10^9+9')).toBe(1000000009);
+    expect(findMod('10^9 + 9')).toBe(1000000009);
+    expect(findMod('109+9')).toBe(1000000009);
   });
   test('Should not detect mod for a number expression containing default mod as a part', () => {
     MODULI.forEach((mod) => {

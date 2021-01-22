@@ -37,8 +37,8 @@ export const findMod = (problemText: string) => {
   const frob = (s: RegExp) => new RegExp('(^|[^\\d])(' + s.source + ')+($|[^\\d])');
   if (contains([frob(/998,?244,?353/)])) result.push(998244353);
   if (contains([frob(/163,?577,?857/)])) result.push(163577857);
-  if (contains([frob(/1,?000,?000,?007/), /10\^[\s{]*9[\s}]*\+[\s]*7/])) result.push(1000000007);
-  if (contains([frob(/1,?000,?000,?009/), /10\^[\s{]*9[\s}]*\+[\s]*9/])) result.push(1000000009);
+  if (contains([frob(/1,?000,?000,?007/), /10\^?[\s{]*9[\s}]*\+[\s]*7/])) result.push(1000000007);
+  if (contains([frob(/1,?000,?000,?009/), /10\^?[\s{]*9[\s}]*\+[\s]*9/])) result.push(1000000009);
   if (contains([frob(/10,?007/)])) result.push(10007);
   return result.length === 1 ? result[0] : null;
 };
