@@ -27,10 +27,10 @@ const findTestCases = (document: Document) => {
   }
 };
 
-const appendCopyButton = (h3: Node | null, handler: () => void) => {
-  if (h3 === null) return false;
+const appendCopyButton = (h1: Node | null, handler: () => void) => {
+  if (h1 === null) return false;
   const copyButton = createCopyButton(handler);
-  h3.parentNode?.insertBefore(copyButton, h3.nextSibling);
+  h1.parentNode?.insertBefore(copyButton, h1.nextSibling);
   return true;
 };
 
@@ -38,10 +38,8 @@ export const siteMojacoder: SiteObject = {
   domain: 'mojacoder.app',
   findTestCases,
   addCopyButton: (document: Document, handler: () => void) => {
-    document.querySelectorAll('h3').forEach((node) => {
-      if (node.textContent !== null && /問題文/.test(node.textContent)) {
-        appendCopyButton(node, handler);
-      }
+    document.querySelectorAll('h1').forEach((node) => {
+      appendCopyButton(node, handler);
     });
   },
 };
