@@ -9,7 +9,7 @@ const findTestCases = (document: Document) => {
     if (textContent === undefined) return;
     const inputRegExp = /入力/;
     const outputRegExp = /出力/;
-    const header = node.parentElement?.previousElementSibling?.textContent;
+    const header = node.parentElement?.childNodes[0].textContent ?? '';
     if (header === undefined || header === null) return;
     if (inputRegExp.test(header)) {
       inputs.push(prettify(textContent));
