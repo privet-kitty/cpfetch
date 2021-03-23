@@ -8,7 +8,8 @@
     "dev": "webpack-cli serve --mode development",
     "build": "webpack --mode production --progress",
     "test": "jest",
-    "lint": "eslint --ignore-path .gitignore --max-warnings=0 \"./**/*.ts\""
+    "lint": "eslint --ignore-path .gitignore --max-warnings=0 \"./**/*.ts\"",
+    "preinstall": "npx npm-force-resolutions"
   },
   "author": {
     "name": "Hugo Sansaqua",
@@ -25,8 +26,8 @@
     "eslint": "^7.16.0",
     "eslint-config-prettier": "^7.1.0",
     "jest": "^26.6.3",
+    "npm-force-resolutions": "0.0.10",
     "prettier": "^2.2.1",
-    "ssri": ">=8.0.1",
     "ts-jest": "^26.4.4",
     "ts-loader": "^8.0.12",
     "ts-node": "^9.1.1",
@@ -35,5 +36,9 @@
     "webpack-cli": "^4.3.0",
     "webpack-dev-server": "^3.11.1",
     "webpack-userscript": "^2.5.6"
-  }
+  },
+  "resolutions": {
+    "ssri": ">=8.0.1"
+  },
+  "dependencies": {}
 }
