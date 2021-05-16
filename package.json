@@ -15,6 +15,11 @@
     "name": "Hugo Sansaqua",
     "email": "privet.kitty99@gmail.com"
   },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:privet-kitty/cpfetch.git"
+  },
+  "private": true,
   "license": "MPL-2.0",
   "devDependencies": {
     "@types/jest": "^26.0.19",
@@ -35,7 +40,7 @@
     "webpack": "^5.11.1",
     "webpack-cli": "^4.3.0",
     "webpack-dev-server": "^3.11.1",
-    "webpack-userscript": "^2.5.6"
+    "webpack-userscript": "^2.5.7"
   },
   "resolutions": {
     "ssri": "^8.0.1"
