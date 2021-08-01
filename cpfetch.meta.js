@@ -12,6 +12,7 @@
 // @match       https://toph.co/arena*
 // @match       https://csacademy.com/contest/*/task/*
 // @match       https://mojacoder.app/*/*/problems/*
+// @match       https://dmoj.ca/problem/*
 // @namespace   https://privet-kitty.github.io/
 // @grant       GM_setClipboard
 // @grant       GM_registerMenuCommand
