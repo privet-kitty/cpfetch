@@ -34,6 +34,7 @@ export const userScriptConfig: UserScriptConfig = {
       'https://toph.co/arena*',
       'https://csacademy.com/contest/*/task/*',
       'https://mojacoder.app/*/*/problems/*',
+      'https://dmoj.ca/problem/*',
     ],
     grant: ['GM_setClipboard', 'GM_registerMenuCommand', 'GM_getResourceText'],
     resource: [
