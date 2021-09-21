@@ -43,8 +43,6 @@
     "webpack-userscript": "^2.5.8"
   },
   "resolutions": {
-    "ssri": "^8.0.1",
-    "ws": "^7.4.6",
     "glob-parent": "^5.1.2"
   },
   "dependencies": {}
