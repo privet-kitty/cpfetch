@@ -43,7 +43,6 @@
     "webpack-userscript": "^2.5.8"
   },
   "resolutions": {
-    "glob-parent": "^5.1.2"
   },
   "dependencies": {}
 }
