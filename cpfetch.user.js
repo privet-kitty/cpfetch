@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name        cpfetch
-// @version     0.4.2
+// @version     0.4.3
 // @author      Hugo Sansaqua
 // @description Userscript for competitive programming: parse test cases and copy template to clipboard on various online judges
 // @homepage    https://github.com/privet-kitty/cpfetch
