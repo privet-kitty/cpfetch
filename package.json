@@ -23,9 +23,9 @@
   "license": "MPL-2.0",
   "devDependencies": {
     "@types/jest": "^26.0.19",
-    "@types/tampermonkey": "^4.0.0",
-    "@types/webpack": "^4.41.25",
-    "@types/webpack-dev-server": "^3.11.1",
+    "@types/tampermonkey": "^4.0.10",
+    "@types/webpack": "^5.28.1",
+    "@types/webpack-dev-server": "^4.7.2",
     "@typescript-eslint/eslint-plugin": "^4.11.1",
     "@typescript-eslint/parser": "^4.11.1",
     "eslint": "^7.16.0",
