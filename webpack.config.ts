@@ -6,14 +6,8 @@ import { userScriptConfig } from './userscript.config';
 module.exports = (_: any, argv: any) => {
   const isDev = argv.mode === 'development';
   console.log(`environment: ${argv.mode}`);
-  const {
-    devURL,
-    downloadBaseURL,
-    updateBaseURL,
-    devPort,
-    scriptName,
-    scriptHeaders,
-  } = userScriptConfig;
+  const { devURL, downloadBaseURL, updateBaseURL, devPort, scriptName, scriptHeaders } =
+    userScriptConfig;
   const outputPath = path.resolve(__dirname, 'dist');
   return {
     entry: path.join(__dirname, 'src/index.ts'),
@@ -37,10 +31,11 @@ module.exports = (_: any, argv: any) => {
     devServer: {
       https: true,
       port: devPort,
-      writeToDisk: true,
-      contentBase: outputPath,
+      devMiddleware: {
+        writeToDisk: true,
+      },
+      static: { directory: outputPath },
       hot: false,
-      inline: false,
       liveReload: false,
     },
     plugins: [
