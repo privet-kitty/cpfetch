@@ -1,23 +1,23 @@
-import WebpackUserscript from 'webpack-userscript';
+import { HeadersProps } from 'webpack-userscript';
 import pkg from './package.json';
 
 const DEV_PORT = 8080;
 
 type UserScriptConfig = {
-  devUrl: string;
-  downloadBaseUrl: string;
-  updateBaseUrl: string;
+  devURL: string;
+  downloadBaseURL: string;
+  updateBaseURL: string;
   devPort: number;
   scriptName: string;
   /** See https://www.tampermonkey.net/documentation.php for details */
-  scriptHeaders: WebpackUserscript.HeaderObject;
+  scriptHeaders: HeadersProps;
 };
 
 export const userScriptConfig: UserScriptConfig = {
-  devUrl: `https://localhost:${DEV_PORT}`,
+  devURL: `https://localhost:${DEV_PORT}`,
   devPort: DEV_PORT,
-  downloadBaseUrl: `${pkg.baseUrl}${pkg.name}/`,
-  updateBaseUrl: `${pkg.baseUrl}${pkg.name}/`,
+  downloadBaseURL: `${pkg.baseUrl}${pkg.name}/`,
+  updateBaseURL: `${pkg.baseUrl}${pkg.name}/`,
   scriptName: pkg.name,
   scriptHeaders: {
     name: pkg.name,
@@ -37,10 +37,13 @@ export const userScriptConfig: UserScriptConfig = {
       'https://dmoj.ca/problem/*',
     ],
     grant: ['GM_setClipboard', 'GM_registerMenuCommand', 'GM_getResourceText'],
-    resource: [
-      'template https://raw.githubusercontent.com/privet-kitty/cl-competitive/master/non-module/template.lisp',
-      'modOperations https://raw.githubusercontent.com/privet-kitty/cl-competitive/master/module/mod-operations.lisp',
-      'increaseStack https://raw.githubusercontent.com/privet-kitty/cl-competitive/master/non-module/increase-space.lisp',
-    ],
+    resource: {
+      template:
+        'https://raw.githubusercontent.com/privet-kitty/cl-competitive/master/non-module/template.lisp',
+      modOperation:
+        'https://raw.githubusercontent.com/privet-kitty/cl-competitive/master/module/mod-operations.lisp',
+      increaseStac:
+        'https://raw.githubusercontent.com/privet-kitty/cl-competitive/master/non-module/increase-space.lisp',
+    },
   },
 };

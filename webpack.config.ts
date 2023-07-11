@@ -1,5 +1,5 @@
 import path from 'path';
-import WebpackUserscript from 'webpack-userscript';
+import { UserscriptPlugin } from 'webpack-userscript';
 import { userScriptConfig } from './userscript.config';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -7,9 +7,9 @@ module.exports = (_: any, argv: any) => {
   const isDev = argv.mode === 'development';
   console.log(`environment: ${argv.mode}`);
   const {
-    devUrl,
-    downloadBaseUrl,
-    updateBaseUrl,
+    devURL,
+    downloadBaseURL,
+    updateBaseURL,
     devPort,
     scriptName,
     scriptHeaders,
@@ -44,19 +44,20 @@ module.exports = (_: any, argv: any) => {
       liveReload: false,
     },
     plugins: [
-      new WebpackUserscript({
+      new UserscriptPlugin({
         headers: isDev
           ? {
               ...scriptHeaders,
-              versions: '[version]-build.[buildNo]',
+              version: scriptHeaders.version && scriptHeaders.version + '-build.[buildNo]',
             }
           : scriptHeaders,
-        downloadBaseUrl,
-        updateBaseUrl,
-        proxyScript: {
-          baseUrl: devUrl,
-          enable: isDev,
-        },
+        downloadBaseURL,
+        updateBaseURL,
+        proxyScript: isDev
+          ? {
+              baseURL: devURL,
+            }
+          : undefined,
       }),
     ],
   };
