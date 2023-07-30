@@ -1,6 +1,6 @@
 {
   "name": "cpfetch",
-  "version": "0.4.8",
+  "version": "0.5.0",
   "description": "Userscript for competitive programming: parse test cases and copy template to clipboard on various online judges",
   "homepage": "https://github.com/privet-kitty/cpfetch",
   "baseUrl": "https://privet-kitty.github.io/",
